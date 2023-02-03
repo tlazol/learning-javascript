@@ -4,7 +4,7 @@
 
 基本が終わった人は course の教材を進めていきましょう。
 
-## サンプルコード
+# サンプルコード
 
 ```javascript
 const nums = [1, 2, 3]
@@ -27,9 +27,9 @@ main(nums)
 3 true
 ```
 
-## 解説
+# 解説
 
-### const
+## const
 
 ```javascript
 const nums = [1, 2, 3]
@@ -41,7 +41,7 @@ const nums = [1, 2, 3]
 
 基本的にはこれを使って様々なものを宣言していきます。
 
-### let 
+## let 
 
 ```javascript
 let flag = false
@@ -51,7 +51,7 @@ let flag = false
 
 任意で値を代入して初期化（破壊）できるので、可能な限り使いません。
 
-### function
+## function
 
 ```javascript
 function main (items) {}
@@ -70,7 +70,7 @@ main() // 実行
 ```
 
 ```javascript
-// 関数を変数に格納
+// 関数を変数に格納（ほぼ使わず）
 const exeMain = function main () {}
 exeMain() // 実行
 ```
@@ -80,3 +80,39 @@ exeMain() // 実行
 const main = () => {}
 main()
 ```
+
+```javascript
+// 即時関数（関数呼び出しがなく、即実行されます）
+(() => {})()
+```
+
+一番よく使うのは匿名関数です。
+
+JavaScript は変数に関数を格納できますので、名無しの関数を変数に格納する事で使用します。
+
+即時関数は、昔は await/async を書くためにたまに使用していましたが、今は `let` を使用しないで済むためによく使います。
+
+`let` を使わざるを得ないシチュエーションを考えてみましょう。例えば下記のようなロジックです。
+
+```javascript
+let flag = true
+
+if (hoge !== fuga) {
+  // Do something
+  flag = false
+}
+```
+
+flag という bool 型変数が、直後のロジックにより true/false が切り替わるというよくあるコードですが、下記のように書き換える事ができます。
+
+```javascript
+const flag = (() => {
+  if (hoge !== fuga) {
+    // Do something
+    return false
+  }
+  return true
+})()
+```
+
+このテクニックを覚えておくと `let` を使用する機会はぐっと減らせます。
