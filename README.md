@@ -2,12 +2,13 @@
 
 下記サンプルコードを使用して、JavaScriptの基本を解説します。
 
-基本が終わった人は course の教材を進めていきましょう。
+基本が終わった人は [course](./course/index.md) の教材を進めていきましょう。
 
 # サンプルコード
 
 ```javascript
 const nums = [1, 2, 3]
+
 let flag = false
 
 function main (items) {
@@ -103,7 +104,21 @@ if (hoge !== fuga) {
 }
 ```
 
-flag という bool 型変数が、直後のロジックにより true/false が切り替わるというよくあるコードですが、下記のように書き換える事ができます。
+flag という bool 型変数が、直後のロジックにより true/false が切り替わるというよくあるコードです。
+
+if 文の中に `const flag` を定義できればよいのですが JavaScript は親から子の変数は見れませんので、できません。
+
+```javascript
+if (0 !== 1) {
+  // Do something
+  const flag = false
+}
+console.log(flag)
+
+// ReferenceError: flag is not defined になる
+```
+
+しかし、即時関数を使えば下記のように書き換える事ができます。
 
 ```javascript
 const flag = (() => {
