@@ -7,6 +7,8 @@
 # サンプルコード
 
 ```javascript
+// 配列を回すだけの処理
+
 const nums = [1, 2, 3]
 
 let flag = false
@@ -30,106 +32,76 @@ main(nums)
 
 # 解説
 
-## const
+## <span style="color: red;">const</span>
 
 ```javascript
 const nums = [1, 2, 3]
 ```
 
-定数を宣言するものです。
-
-再代入による変更ができず、再宣言もできません。
-
+定数を宣言するものです。  
+再代入による変更ができず、再宣言もできません。  
 基本的にはこれを使って様々なものを宣言していきます。
 
-## let 
+しかし配列の場合、ちょっと癖があるので、下記の動きも知っておきましょう。
+
+```javascript
+// 配列
+const a = [1, 2, 3]
+a = [4, 5, 6] // TypeError: Assignment to constant variable.
+
+const b = [1, 2, 3]
+b.push(4) // [1, 2, 3, 4]
+
+// 連想配列
+const c = {'key': 'value'}
+c = {'OTHER_KEY': 'value'} // TypeError: Assignment to constant variable.
+
+const d = {'key': 'value'}
+d.key = 'otherValue' // {'key': 'otherValue'}
+d.otherKey = 'hoge' // {key: 'otherValue', otherKey: 'hoge'}
+```
+
+## <span style="color: red;">let</span>
 
 ```javascript
 let flag = false
 ```
 
-変数を宣言する時に使用します。
-
+変数を宣言する時に使用します。  
 任意で値を代入して初期化（破壊）できるので、可能な限り使いません。
 
-## function
+## <span style="color: red;">{}</span>
+
+{} を Curly bracket (カーリーブラケット) と言います。
+
+```javascript
+function main (items) {}
+
+for (let i = 0; i < items.length; i++) {}
+
+if (Math.random() > 0.5) {}
+```
+
+などでよく見かけますね。
+
+カーリーブラケットで定義された `const` `let` はブロックスコープされ、外からは参照できません。
+
+```javascript
+if (Math.random() > 0.5) {
+  const y = 5
+}
+console.log(y)  // ReferenceError: y is not defined
+```
+
+グローバルを汚さないためにもよく使うテクニックですので、覚えておきましょう。
+
+## <span style="color: red;">function</span>
 
 ```javascript
 function main (items) {}
 ```
 
-関数定義といわれるものです。
+関数定義といわれるものです。  
+実行すれば中に書かれたロジックが動きます。
 
-JavaScript は関数を定義する方法がいくつかありますが、関数の巻き上げができるのはこの関数定義だけになります。
-
-主な関数の定義の方法も見てみましょう。
-
-```javascript
-// 関数定義
-function main () {}
-main() // 実行
-```
-
-```javascript
-// 関数を変数に格納（ほぼ使わず）
-const exeMain = function main () {}
-exeMain() // 実行
-```
-
-```javascript
-// 匿名関数（無名関数）
-const main = () => {}
-main()
-```
-
-```javascript
-// 即時関数（関数呼び出しがなく、即実行されます）
-(() => {})()
-```
-
-一番よく使うのは匿名関数です。
-
-JavaScript は変数に関数を格納できますので、名無しの関数を変数に格納する事で使用します。
-
-即時関数は、昔は await/async を書くためにたまに使用していましたが、今は `let` を使用しないで済むためによく使います。
-
-`let` を使わざるを得ないシチュエーションを考えてみましょう。例えば下記のようなロジックです。
-
-```javascript
-let flag = true
-
-if (hoge !== fuga) {
-  // Do something
-  flag = false
-}
-```
-
-flag という bool 型変数が、直後のロジックにより true/false が切り替わるというよくあるコードです。
-
-if 文の中に `const flag` を定義できればよいのですが JavaScript は親から子の変数は見れませんので、できません。
-
-```javascript
-if (0 !== 1) {
-  // Do something
-  const flag = false
-}
-console.log(flag)
-
-// ReferenceError: flag is not defined になる
-```
-
-しかし、即時関数を使えば下記のように書き換える事ができます。
-
-```javascript
-const flag = (() => {
-  if (hoge !== fuga) {
-    // Do something
-    return false
-  }
-  return true
-})()
-```
-
-このテクニックを覚えておくと `let` を使用する機会はぐっと減らせます。
-
-次は [course](./course/index.md) の教材を進めていきましょう。
+詳細は [course](./course/index.md) で解説します。

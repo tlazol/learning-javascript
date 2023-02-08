@@ -1,4 +1,6 @@
-- [ループ処理について](./loop.md)
+- [分割代入](./destructuringAssignment.md)
+- [関数](./function.md)
+- [ループ処理](./loop.md)
 - map filter reduce について
 - Web vitals とは
 - leetcode を JavaScript でといてみよう
