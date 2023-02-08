@@ -2,4 +2,4 @@
 1. [関数](./function.md)
 1. [オブジェクト操作](./object.md)
 1. [ループ処理](./loop.md)
-1. [map filter reduce](./mapFilterReduce.md)
+1. [map filter reduce について](./mapFilterReduce.md)
