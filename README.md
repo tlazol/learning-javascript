@@ -2,7 +2,7 @@
 
 下記サンプルコードを使用して、JavaScriptの基本を解説します。
 
-基本が終わった人は [course](./course/index.md) の教材を進めていきましょう。
+基本が終わった人は [course](./course/README.md) の教材を進めていきましょう。
 
 # サンプルコード
 
@@ -104,4 +104,4 @@ function main (items) {}
 関数定義といわれるものです。  
 実行すれば中に書かれたロジックが動きます。
 
-詳細は [course](./course/index.md) で解説します。
+詳細は [course](./course/README.md) で解説します。
