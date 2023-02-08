@@ -1,6 +1,5 @@
-- [分割代入](./destructuringAssignment.md)
-- [関数](./function.md)
-- [ループ処理](./loop.md)
-- map filter reduce について
-- Web vitals とは
-- leetcode を JavaScript でといてみよう
+1. [分割代入](./destructuringAssignment.md)
+1. [関数](./function.md)
+1. [オブジェクト操作](./object.md)
+1. [ループ処理](./loop.md)
+1. [map filter reduce](./mapFilterReduce.md)

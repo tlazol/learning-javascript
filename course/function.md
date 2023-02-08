@@ -34,7 +34,8 @@ function main () {
 const main = () => {
   console.log('hello')
 }
-main()
+
+main() // hello
 ```
 
 一番よく使うのはこの匿名関数です。  
@@ -44,9 +45,8 @@ JavaScript は変数に関数を格納できますので、名無しの関数を
 
 ```javascript
 (() => {
-  console.log('hello')
+  console.log('hello') // hello 
 })()
-// hello 
 ```
 
 即時関数は、関数の呼び出しを行わずとも、即実行される関数です。  
